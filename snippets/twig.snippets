@@ -1,0 +1,19 @@
+# snippets for twig php templates
+snippet t
+	{% trans %}${1}{% endtrans %}${2}
+snippet parent
+	{% parent() %}
+	${2}
+snippet asset
+	{{ asset('${1}') }}${2}
+snippet path
+	{{ path('${1}') }}${2}
+snippet url
+	{{ url('${1}') }}${2}
+snippet css
+	<link rel="stylesheet" href="{{ asset('css/${1}') }}">
+	${2}
+snippet scr
+	<script src="{{ asset('js/${1}') }}"></script>
+	${2}
+

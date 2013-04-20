@@ -403,3 +403,194 @@ snippet aw
 	array_walk($${1:foo}, function(&$${2:v}, $${3:k}) {
 		$$2 = ${4};
 	});
+# General Snippets
+# ================
+snippet inher
+	/**
+	 * {@inheritdoc}
+	 */
+	public function ${1:functionName}(${2:$params})
+	{
+		${3}
+	}
+snippet ns
+	namespace `substitute(substitute(expand("%:h"), '\v^.*src\/', '\1', ''), '\/', '\\\', 'g')`;
+	${1}
+snippet pm
+	/**
+	 * ${1:description}
+	 */
+	public function ${2:methodName}(${3})
+	{
+		${4:// function body}
+	}
+snippet con
+	/**
+	 * Constructor
+	 */
+	public function __construct()
+	{
+		${1}
+	}
+# PHPUnit
+# =======
+snippet testc
+	/**
+	 * $1 Test
+	 */
+	class ${1:TestName}Test extends \PHPUnit_Framework_TestCase
+	{
+		${2}
+	}
+snippet test
+	/**
+	 * Test $1
+	 */
+	public function test${1:NameOfTest}()
+	{
+	    ${2}
+	}
+snippet testp
+	/**
+	 * Provider for $1
+	 *
+	 * @return array
+	 */
+	public static function providerFor${1:Something}()
+	{
+		return array(
+			array(${2:parameters}),
+		);
+	}
+snippet testex
+	$this->setExpectedException('${1:InvalidArgument}Exception');
+snippet setup
+	public function setUp()
+	{
+		parent::setUp();
+
+		$this->${1:something} = new ${2:something};
+	}
+snippet dp
+	@dataProvider providerFor
+snippet tae
+	$this->assertEquals(${1:expected}, ${2:actual});${3}
+snippet tai
+	$this->assertInstanceOf('${1:Some\Class}', ${2:actual});${3}
+snippet tat
+	$this->assertTrue($${1:actual});${2}
+snippet taf
+	$this->assertFalse($${1:actual});${2}
+snippet tan
+	$this->assertNull($${1:actual});${2}
+# Doctrine
+# ========
+snippet de
+	<?php
+	namespace ${1:`substitute(substitute(expand("%:h"), '\v^.*src\/', '\1', ''), '\/', '\\\', 'g')`};
+
+	use Doctrine\ORM\Mapping as ORM;
+	
+	/**
+	 * @ORM\Entity
+	 * @ORM\Table(name="${2:table_name}")
+	 */
+	class `Filename()`
+	{
+		${3}
+	}
+snippet deo
+	<?php
+	namespace ${1:`substitute(substitute(expand("%:h"), '\v^.*src\/', '\1', ''), '\/', '\\\', 'g')`};
+	
+	/**
+	 * @Entity
+	 * @Table(name="${2:table_name}")
+	 */
+	class `Filename()`
+	{
+		${3}
+	}
+# id field
+snippet did
+	/**
+	 * @ORM\Id
+	 * @ORM\GeneratedValue
+	 * @ORM\Column(name="${1:id}", type="integer", nullable=false)
+	 */
+	protected $${2:$1};
+	${3}
+# int = integer
+snippet di
+	/** @ORM\Column(name="${1:name}", type="integer") */
+	protected $${2:$1};
+	${3}
+snippet din
+	/** @ORM\Column(name="${1:name}", type="integer", nullable=false) */
+	protected $${2:$1};
+	${3}
+# tinyint = smallint
+snippet dti
+	/** @ORM\Column(name="${1:name}", type="smallint") */
+	protected $${2:$1};
+	${3}
+snippet dtin
+	/** @ORM\Column(name="${1:name}", type="smallint", nullable=false) */
+	protected $${2:$1};
+	${3}
+# varchar = string
+snippet dv
+	/** @ORM\Column(name="${1:name}", type="string", length=${2:64}) */
+	protected $${3:$1};
+	${4}
+snippet dvn
+	/** @ORM\Column(name="${1:name}", type="string", length=${2:64}, nullable=false) */
+	protected $${3:$1};
+	${4}
+# text/mediumtext = text
+snippet dt
+	/** @ORM\Column(name="${1:name}", type="text") */
+	protected $${2:$1};
+	${3}
+snippet dtn
+	/** @ORM\Column(name="${1:name}", type="text", nullable=false) */
+	protected $${2:$1};
+	${3}
+# float/double = float
+snippet df
+	/** @ORM\Column(name="${1:name}", type="float") */
+	protected $${2:$1};
+	${3}
+snippet dfn
+	/** @ORM\Column(name="${1:name}", type="float", nullable=false) */
+	protected $${2:$1};
+	${3}
+snippet ddec
+	/** @ORM\Column(name="${1:name}", type="decimal") */
+	protected $${2:$1};
+	${3}
+snippet ddecn
+	/** @ORM\Column(name="${1:name}", type="decimal", nullable=false) */
+	protected $${2:$1};
+	${3}
+# datetime/timestamp = datetime
+snippet ddt
+	/** @ORM\Column(name="${1:name}", type="datetime") */
+	protected $${2:$1};
+	${3}
+snippet ddtn
+	/** @ORM\Column(name="${1:name}", type="datetime", nullable=false) */
+	protected $${2:$1};
+	${3}
+snippet em
+	$this->em->getRepository('${1:EntityName}')->findOneBy($criteria${2:, $orderBy});
+snippet dub
+	\Doctrine\Common\Util\Debug::dump(${1});${2}
+snippet dac
+	use Doctrine\Common\Collections\ArrayCollection;${1}
+snippet dlog
+	$em->getConfiguration()->setSQLLogger(new \Doctrine\DBAL\Logging\EchoSQLLogger());
+snippet dcri
+	use Doctrine\Common\Collections\Criteria;
+snippet dpag
+	use Doctrine\ORM\Tools\Pagination\Paginator;

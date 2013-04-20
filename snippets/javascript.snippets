@@ -154,10 +154,125 @@ snippet sing
 
 		return instance;
 	}
-# Crockford's object function 
+# Crockford's object function
 snippet obj
 	function object(o) {
 		function F() {}
 		F.prototype = o;
 		return new F();
+	}
+# mocha / chai
+# ============
+snippet desc
+	describe('${1:description}', function () {
+	  ${2}
+	});
+snippet it
+	it('should ${1:blah blah}', function () {
+		${2}
+	});
+snippet bef
+	beforeEach(function () {
+	  ${1}
+	});
+snippet aft
+	afterEach(function () {
+	  ${1}
+	});
+snippet exp
+	expect(${1}).toBe(${2});
+# dev
+# ===
+snippet log
+	console.log('%c ${1:message}', 'background: #222; color: #bada55');
+# backbone
+# ========
+snippet bbm
+	Backbone.Model.extend({
+	});
+snippet bbc
+	$1${2:s} = Backbone.Collection.extend({
+	  model: ${1:Model}
+	});
+snippet bbv
+	Backbone.View.extend({
+	  template: '${1:templateName}'
+	});
+snippet fn
+	function() {
+	  ${2}
+	}${1}
+# grunt
+# =====
+snippet gf
+	module.exports = function(grunt) {
+	  grunt.initConfig({
+	    ${1}
+	  });
+	
+	  grunt.loadNpmTasks('grunt-regarde');
+	  grunt.loadNpmTasks('grunt-contrib-livereload');
+	
+	  grunt.registerTask('watch', [ 'livereload-start', 'regarde' ]);
+	};
+snippet gnt
+	grunt.loadNpmTasks('grunt-${1:contrib-less}');${2}
+snippet gt
+	grunt.registerTask('${1:default}', [ '${2:test}' ]);${3}
+snippet greg
+	regarde: {
+	  ${1:js}: {
+	    files: [ 'app/**/*.${2:js}' ],
+	    tasks: [ '${3:livereload}' ]
+	  }${4}
+	}
+snippet ghbs
+	handlebars: {
+	  compile: {
+	    options: {
+	      namespace: '${1:JST}'
+	    },
+	    files: {
+	      '${2:build/templates.js}': [ '${3:app/}templates/**/*.hbs' ]
+	    }
+	  }
+	}${4}
+snippet gcat
+	concat: {
+	  app: {
+	    src: [
+	      'components/jquery/jquery.js',
+	      'components/underscore/underscore.js',
+	      'components/backbone/backbone.js',
+	      'components/layoutmanager/backbone.layoutmanager.js',
+	      'components/handlebars.js/dist/handlebars.js',
+	      'build/templates.js',
+	      'app/config.js',
+	      'app/models/**/*.js',
+	      'app/collections/**/*.js',
+	      'app/views/**/*.js',
+	      'app/router.js',
+	      'app/app.js'
+	    ],
+	    dest: 'public/js/app.js'
+	  }
+	}
+snippet gless
+	less: {
+	  prod: {
+	    options: {
+	      yuicompress: true
+	    },
+	    files: {
+	      'public/css/styles.css': 'less/styles.less',
+	    }
+	  }
+	}
+snippet gcp
+	copy: {
+	  public: {
+	    files: [
+	      { src: [ 'components/requirejs/require.js' ], dest: 'public/js/lib/' }
+	    ]
+	  }
 	}

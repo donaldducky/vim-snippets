@@ -24,3 +24,29 @@ snippet seq
 	create sequence ${1:name} start with ${2:1} increment by ${3:1} minvalue ${4:1};
 snippet s*
 	select * from ${1:table}
+# General
+# =======
+snippet int
+	${1:name} int(10) unsigned NOT NULL,
+snippet tiny
+	${1:name} tinyint(3) unsigned NOT NULL,
+snippet	var
+	${1:name} varchar(${2:255}) DEFAULT '',
+snippet	text
+	${1:name} text,
+snippet	ts
+	${1:name} timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+snippet dt
+	${1:name} datetime NOT NULL,
+snippet uniq
+	UNIQUE KEY (${1})
+snippet key
+	KEY (${1})
+snippet pk
+	PRIMARY KEY (${1})
+snippet id
+	id int(10) unsigned NOT NULL auto_increment,
+snippet cat
+	created_at datetime NOT NULL,
+snippet uat
+	updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
